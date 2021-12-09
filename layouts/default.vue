@@ -4,10 +4,23 @@
         <!-- <template #brand>
         </template> -->
         <template #start >
-            <b-navbar-item href="#">
-                Home
+            <b-navbar-item class="">
+                <ul class="menu-list" >
+                  <li
+                    v-for="(item, key) of items"
+                    :key="key"
+                    style="display: inline-block"
+                  >
+                    <NuxtLink
+                      :to="item.to"
+                      exact-active-class="is-active"
+                    >
+                      <b-icon :icon="item.icon" /> {{ item.title }}
+                    </NuxtLink>
+                  </li>
+                </ul>
             </b-navbar-item>
-            <hr >
+            <!-- <hr >
             <b-navbar-item href="#" class="linhaVertical">
                 Blog
             </b-navbar-item>
@@ -16,7 +29,7 @@
             </b-navbar-item>
             <b-navbar-item href="#" class="linhaVertical">
                 Contatos
-            </b-navbar-item>
+            </b-navbar-item> -->
             <!-- <b-navbar-dropdown label="Info">
                 <b-navbar-item href="#">
                     Suporte
@@ -31,18 +44,17 @@
             <b-navbar-item tag="div" >
                 <div class="buttons">
                     <a class="button botaoLogin">
-                        <strong>Login</strong>
+                        <strong>Login</strong>  
                     </a>
-                    
                 </div>
             </b-navbar-item>
         </template>
     </b-navbar>
 
     <section class="main-content columns" >
-      <aside class="column is-2 section" style="display: none">
+      <!-- <aside class="column is-2 section" style="display: none  ">
         <p class="menu-label is-hidden-touch">
-          General
+          Geral
         </p>
         <ul class="menu-list">
           <li
@@ -57,7 +69,7 @@
             </NuxtLink>
           </li>
         </ul>
-      </aside>
+      </aside> -->
 
       <div class="container column is-10">
         <Nuxt />
@@ -80,6 +92,16 @@ export default {
           title: 'Inspire',
           icon: 'lightbulb',
           to: { name: 'inspire' }
+        },
+        {
+          title: 'Cadastro',
+          icon: 'account-plus',
+          to:{name: 'cadastro'}
+        },
+        {
+          title: 'Contatos',
+          icon: 'contacts',
+          to:{name: 'contatos'}
         }
       ]
     }
